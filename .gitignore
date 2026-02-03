@@ -1,26 +1,10 @@
-# Python
+# Python编译缓存
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
+*.pyc
+*.pyo
+*.pyd
 
-# Virtual Environment
+# 虚拟环境
 .venv/
 venv/
 env/
@@ -31,7 +15,7 @@ env/
 *.swp
 *.swo
 
-# OS
+# 系统文件
 .DS_Store
 Thumbs.db
 
@@ -42,8 +26,8 @@ Thumbs.db
 *.log
 logs/
 
-# 音频缓存
+# 音频临时文件
 Music/temp_*
 
-# 备份
-备份1/
+# 备份目录
+备份*/
