@@ -1,0 +1,34 @@
+# 摄像头分辨率配置
+CAMERA_WIDTH = 640
+CAMERA_HEIGHT = 480
+
+# 检测置信度阈值
+POSE_DETECTION_CONFIDENCE = 0.8
+POSE_TRACKING_CONFIDENCE = 0.8
+HAND_DETECTION_CONFIDENCE = 0.8
+HAND_TRACKING_CONFIDENCE = 0.8
+
+# 稳定检测帧数（避免抖动误判）
+STABLE_FRAME_COUNT = 15
+
+# 颜色常量（BGR格式）
+COLOR_KEYPOINT = (255, 0, 0)    # 姿态关键点：蓝色
+COLOR_CONNECTION = (0, 255, 0)  # 骨架连线：绿色
+COLOR_SUCCESS = (0, 0, 255)     # 符合姿势：红色
+COLOR_NORMAL = (0, 255, 255)    # 不符合姿势：黄色
+COLOR_HAND = (255, 255, 0)      # 手部关键点：青色
+
+# 字体常量
+FONT_SCALE = 1.2
+FONT_THICKNESS = 3
+FONT_SIZE = 30
+
+# 摄像头查找配置
+MAX_CAMERA_INDEX = 10
+
+# 手部判断容错阈值（归一化坐标）
+HAND_Y_TOLERANCE = 0.02  # 举过头顶容错
+FINGER_OPEN_THRESHOLD = 0.05  # 手指展开容错
+
+# 启用音频
+ENABLE_AUDIO = False
