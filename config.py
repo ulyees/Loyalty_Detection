@@ -32,3 +32,6 @@ FINGER_OPEN_THRESHOLD = 0.05  # 手指展开容错
 
 # 启用音频
 ENABLE_AUDIO = False
+
+# 调试信息
+DEBUG_MODE_LOG = False

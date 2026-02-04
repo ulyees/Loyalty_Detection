@@ -23,7 +23,8 @@ from config import (
     COLOR_KEYPOINT, COLOR_CONNECTION, COLOR_SUCCESS, COLOR_NORMAL, COLOR_HAND,
     FONT_SCALE, FONT_THICKNESS, FONT_SIZE,
     HAND_Y_TOLERANCE, FINGER_OPEN_THRESHOLD,
-    ENABLE_AUDIO
+    ENABLE_AUDIO,
+    DEBUG_MODE_LOG
 )
 from camera_utils import init_camera
 
@@ -471,19 +472,22 @@ class HandUpHeadWithOpenDetector:
             draw = ImageDraw.Draw(pil_image)
 
             # 调试信息显示
-            debug_info = [
-                f"帧号: {self.frame_count}",
-                f"检测结果: {'✅ 成功' if current_result else '❌ 失败'}",
-                f"稳定帧: {self.stable_count}/{STABLE_FRAME_COUNT}",
-                f"成功率: {self.debug_data['success_rate']:.1f}%",
-                "",
-                "=== 详细检测结果 ===",
-                f"举过头顶: {'✅' if self.detection_details['hands_above_head'] else '❌'}",
-                f"左手张开: {'✅' if self.detection_details['left_hand_open'] else '❌'}",
-                f"右手张开: {'✅' if self.detection_details['right_hand_open'] else '❌'}",
-                f"双手检测: {'✅' if self.detection_details['both_hands_detected'] else '❌'}",
-                f"所有条件: {'✅' if self.detection_details['all_conditions_met'] else '❌'}"
-            ]
+            if DEBUG_MODE_LOG:
+                debug_info = [
+                    f"帧号: {self.frame_count}",
+                    f"检测结果: {'成功' if current_result else '失败'}",
+                    f"稳定帧: {self.stable_count}/{STABLE_FRAME_COUNT}",
+                    f"成功率: {self.debug_data['success_rate']:.1f}%",
+                    "",
+                    "=== 详细检测结果 ===",
+                    f"举过头顶: {'是' if self.detection_details['hands_above_head'] else '否'}",
+                    f"左手张开: {'是' if self.detection_details['left_hand_open'] else '否'}",
+                    f"右手张开: {'是' if self.detection_details['right_hand_open'] else '否'}",
+                    f"双手检测: {'是' if self.detection_details['both_hands_detected'] else '否'}",
+                    f"所有条件: {'是' if self.detection_details['all_conditions_met'] else '否'}"
+                ]
+            else:
+                debug_info = []
 
             y_offset = 30
             for i, line in enumerate(debug_info):
@@ -612,10 +616,8 @@ def debug_mediapipe_detection():
 
 
 if __name__ == "__main__":
-    # 直接运行测试
     debug_mediapipe_detection()
 
-    # 创建测试实例
     try:
         detector = HandUpHeadWithOpenDetector(camera_index=0, debug_mode=True)
         detector.start_detection()

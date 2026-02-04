@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)
 class ModernPoseDetectionGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("🤖 智能姿势检测系统")
+        self.root.title("🤖 忠诚度检测")
         self.root.geometry("1000x750")
         self.root.minsize(900, 650)
         self.root.configure(bg="#ffffff")
